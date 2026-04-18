@@ -37,14 +37,15 @@ const s = {
   }
 };
 
-export default function GameOverScreen({ success, score, levelUpResult, missionName }) {
+export default function GameOverScreen({ success, victory, score, levelUpResult, missionName }) {
   const navigate = useNavigate();
 
   return (
     <div style={s.overlay}>
       <div style={s.card}>
-        <div style={s.icon}>{success ? '🏆' : '💀'}</div>
-        <div style={s.title}>{success ? 'HEIST COMPLETE' : 'MISSION FAILED'}</div>
+        <div style={s.icon}>{victory ? '🎉' : success ? '🏆' : '💀'}</div>
+        <div style={s.title}>{victory ? 'MISSION COMPLETE' : success ? 'EXTRACTED' : 'MISSION FAILED'}</div>
+        {victory && <div style={{ color:'#ffaa00', fontSize:'13px', marginBottom:'4px', letterSpacing:'1px' }}>ALL WAVES CLEARED</div>}
         <div style={s.subtitle}>{missionName}</div>
 
         <div style={s.statRow}>
